@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy Corner Café</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">
+                <span class="logo-icon">☕</span>
+                <span class="logo-text">Cozy Corner</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button id="userMenuBtn" class="user-menu-btn">Account</button></li>
+                <li>
+                    <button id="cartBtn" class="cart-btn">
+                        <span class="cart-icon">🛒</span>
+                        <span id="cartCount" class="cart-count">0</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- User Modal -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-tabs">
+                <button class="modal-tab active" data-tab="login">Login</button>
+                <button class="modal-tab" data-tab="signup">Sign Up</button>
+            </div>
+            <div id="loginTab" class="modal-tab-content active">
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+            <div id="signupTab" class="modal-tab-content">
+                <form id="signupForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Your Order</h2>
+            <div id="cartItems" class="cart-items">
+                <!-- Cart items will be added here dynamically -->
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+                <button id="checkoutBtn" class="btn btn-primary">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Welcome to Cozy Corner Café</h1>
+                <p>Where every cup tells a story and every visit feels like coming home</p>
+                <div class="hero-buttons">
+                    <a href="#menu" class="btn btn-primary">Explore Our Menu</a>
+                    <button id="orderNowBtn" class="btn btn-secondary">Order Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h2>Our Story</h2>
+                        <p>Founded in 2015, Cozy Corner Café was born from a simple passion: creating a space where people could slow down and savor the moment in our fast-paced world.</p>
+                        <p>We source our beans directly from small farms around the world, ensuring both exceptional quality and ethical practices. Each cup is carefully crafted by our trained baristas who are as passionate about coffee as we are.</p>
+                        <div class="stats-grid">
+                            <div class="stat">
+                                <h3>10+</h3>
+                                <p>Coffee Origins</p>
+                            </div>
+                            <div class="stat">
+                                <h3>25+</h3>
+                                <p>Drink Varieties</p>
+                            </div>
+                            <div class="stat">
+                                <h3>3</h3>
+                                <p>Locations</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.pexels.com/photos/1855214/pexels-photo-1855214.jpeg" alt="Coffee being brewed" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="section bg-light">
+            <div class="container">
+                <h2>Our Menu</h2>
+                <div class="menu-tabs">
+                    <button class="menu-tab active" data-category="coffee">Coffee</button>
+                    <button class="menu-tab" data-category="tea">Tea</button>
+                    <button class="menu-tab" data-category="pastries">Pastries</button>
+                    <button class="menu-tab" data-category="sandwiches">Sandwiches</button>
+                    <button class="menu-tab" data-category="desserts">Desserts</button>
+                    <button class="menu-tab" data-category="smoothies">Smoothies</button>
+                </div>
+                <div class="menu-grid" id="menuGrid">
+                    <!-- Menu items will be added here dynamically -->
+                </div>
+                
+                <!-- Mini Cart -->
+                <div id="miniCart" class="mini-cart">
+                    <div class="mini-cart-header">
+                        <h3>Current Order</h3>
+                        <span id="miniCartCount" class="mini-cart-count">0 items</span>
+                    </div>
+                    <div id="miniCartItems" class="mini-cart-items">
+                        <!-- Mini cart items will be added here dynamically -->
+                    </div>
+                    <div class="mini-cart-footer">
+                        <div class="mini-cart-total">
+                            <span>Total:</span>
+                            <span id="miniCartTotal">$0.00</span>
+                        </div>
+                        <button id="viewCartBtn" class="btn btn-primary">View Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <div class="info-item">
+                            <span class="icon">✉️</span>
+                            <div>
+                                <p class="label">Email</p>
+                                <p>hello@cozycorner.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="icon">📞</span>
+                            <div>
+                                <p class="label">Phone</p>
+                                <p>(555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="newsletter">
+                            <h4>Newsletter</h4>
+                            <p>Subscribe for updates and special offers</p>
+                            <form id="newsletterForm" class="newsletter-form">
+                                <input type="email" placeholder="Your email" required>
+                                <button type="submit" class="btn btn-primary">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <span class="logo-icon">☕</span>
+                        <span class="logo-text">Cozy Corner</span>
+                    </div>
+                    <p>Where every cup tells a story and every visit feels like coming home.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-hours">
+                    <h4>Hours</h4>
+                    <div class="hours-grid">
+                        <div class="location-hours">
+                            <h5>Downtown</h5>
+                            <p>Mon-Fri: 7am-8pm</p>
+                            <p>Sat-Sun: 8am-9pm</p>
+                        </div>
+                        <div class="location-hours">
+                            <h5>Riverside</h5>
+                            <p>Mon-Fri: 7am-9pm</p>
+                            <p>Sat-Sun: 8am-10pm</p>
+                        </div>
+                        <div class="location-hours">
+                            <h5>University</h5>
+                            <p>Mon-Fri: 6am-11pm</p>
+                            <p>Sat-Sun: 7am-11pm</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cozy Corner Café. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">↑</button>
+
+    <script src="js/menu-data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/modals.js"></script>
+</body>
+</html>
